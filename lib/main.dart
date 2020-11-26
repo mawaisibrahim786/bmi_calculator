@@ -1,62 +1,30 @@
-import 'package:bmi_calculator/RepeatContainerFile.dart';
-import 'package:flutter/material.dart';
-import 'constantfile.dart';
-import 'input_page.dart';
-import 'calculatorFile.dart';
-class ResultScreen extends StatelessWidget {
-  ResultScreen({@required this.bmiResult,this.resultText,this.interperation});
-  final String bmiResult;
-  final String resultText;
-  final String interperation;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('BMI Results'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Center(
-                child: Text('Your Result',style: ktitleStyle,),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: RepeatContainerCode(
-              colors: activeColor,
-              cardWidget: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(resultText.toUpperCase(),style: kresultTextStyle,),
-                  Text(bmiResult,style: kBMITextStyle,),
-                  Text(interperation,style: kbodyTextStyle,),
-                ],
+/ This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility that Flutter provides. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
 
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>InputPage()));
-              },
-              child: Container(
-                child: Center(child: Text('ReCalculate',style: klargeButtonstyle,)),
-                color: Color(0xFFEB1555),
-                margin: EdgeInsets.only(top:10.0),
-                width: double.infinity,
-                height: 80.0,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:bmi_calculator/main.dart';
+
+void main() {
+testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+// Build our app and trigger a frame.
+await tester.pumpWidget(BMICALCULATOR());
+
+// Verify that our counter starts at 0.
+expect(find.text('0'), findsOneWidget);
+expect(find.text('1'), findsNothing);
+
+// Tap the '+' icon and trigger a frame.
+await tester.tap(find.byIcon(Icons.add));
+await tester.pump();
+
+// Verify that our counter has incremented.
+expect(find.text('0'), findsNothing);
+expect(find.text('1'), findsOneWidget);
+});
 }
