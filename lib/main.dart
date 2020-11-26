@@ -1,77 +1,86 @@
-name: bmi_calculator
-description: A new Flutter application.
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+class InputPage extends StatefulWidget {
+  @override
+  _InputPageState createState() => _InputPageState();
+  @@ -18,16 +18,33 @@ class _InputPageState extends State<InputPage> {
+  Expanded(child: Row(
+  children: <Widget>[
+  Expanded(
+  child: new RepeatContainerCode(colors: Color(0xFF1D1E33))
+  child: new RepeatContainerCode(colors: Color(0xFF1D1E33),
+  cardWidget: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+  Icon(
+  FontAwesomeIcons.male,
+  size:80.0,
+  ),
+  SizedBox(
+  height: 15.0,
+  ),
+  Text(
+  'Male',
+  style: TextStyle(fontSize: 18.0,color: Color(0xFF8D8E98)),
+  ),
+  ],
+  ),
+  )
+  ),
+  Expanded(child: new RepeatContainerCode(colors: Colors.blueGrey,)),
+  Expanded(child: new RepeatContainerCode(colors: Color(0xFF1D1E33),)),
+  ],
+  )),
+  Expanded(child: new RepeatContainerCode(colors: Colors.greenAccent,)),
+  Expanded(child: new RepeatContainerCode(colors: Color(0xFF1D1E33),)),
+  Expanded(child: Row(
+  children: <Widget>[
+  Expanded(child: new RepeatContainerCode(colors: Colors.blueAccent,)),
+  Expanded(child: new RepeatContainerCode(colors: Colors.amberAccent,)),
+  Expanded(child: new RepeatContainerCode(colors: Color(0xFF1D1E33),)),
+  Expanded(child: new RepeatContainerCode(colors: Color(0xFF1D1E33),)),
+  ],
+  )),
+  ],
+  @@ -38,12 +55,14 @@ class _InputPageState extends State<InputPage> {
+  }
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+  class RepeatContainerCode extends StatelessWidget {
+  RepeatContainerCode({@required this.colors});
+  RepeatContainerCode({@required this.colors,this.cardWidget});
+  final Color colors;
+  final cardWidget;
+  @override
+  Widget build(BuildContext context) {
+  return Container(
+  margin: EdgeInsets.all(15.0),
+  child: cardWidget,
+  decoration: BoxDecoration(
+  color:colors,
+  borderRadius: BorderRadius.circular(10.0)
+  7  pubspec.lock
+  @@ -67,6 +67,13 @@ packages:
+  description: flutter
+  source: sdk
+  version: "0.0.0"
+  font_awesome_flutter:
+  dependency: "direct main"
+  description:
+  name: font_awesome_flutter
+  url: "https://pub.dartlang.org"
+  source: hosted
+  version: "8.10.0"
+  matcher:
+  dependency: transitive
+  description:
+  1  pubspec.yaml
+  @@ -28,6 +28,7 @@ dependencies:
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.0
+  font_awesome_flutter: ^8.10.0
 
-environment:
-sdk: ">=2.7.0 <3.0.0"
-
-dependencies:
-flutter:
-sdk: flutter
-
-
-# The following adds the Cupertino Icons font to your application.
-# Use with the CupertinoIcons class for iOS style icons.
-cupertino_icons: ^1.0.0
-font_awesome_flutter: ^8.10.0
-
-dev_dependencies:
-flutter_test:
-sdk: flutter
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
-flutter:
-
-# The following line ensures that the Material Icons font is
-# included with your application, so that you can use the icons in
-# the material Icons class.
-uses-material-design: true
-
-# To add assets to your application, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
-#   - images/a_dot_ham.jpeg
-
-# An image asset can refer to one or more resolution-specific "variants", see
-# https://flutter.dev/assets-and-images/#resolution-aware.
-
-# For details regarding adding assets from package dependencies, see
-# https://flutter.dev/assets-and-images/#from-packages
-
-# To add custom fonts to your application, add a fonts section here,
-# in this "flutter" section. Each entry in this list should have a
-# "family" key with the font family name, and a "fonts" key with a
-# list giving the asset and other descriptors for the font. For
-# example:
-# fonts:
-#   - family: Schyler
-#     fonts:
-#       - asset: fonts/Schyler-Regular.ttf
-#       - asset: fonts/Schyler-Italic.ttf
-#         style: italic
-#   - family: Trajan Pro
-#     fonts:
-#       - asset: fonts/TrajanPro.ttf
-#       - asset: fonts/TrajanPro_Bold.ttf
-#         weight: 700
-#
-# For details regarding fonts from package dependencies,
-# see https://flutter.dev/custom-fonts/#from-packages
+  dev_dependencies:
+  flutter_test:
